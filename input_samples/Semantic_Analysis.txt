@@ -1,0 +1,24 @@
+<div id="notUnique">
+  <head cp-app="allowed">
+    <li @click="liInHeadIsBad">
+      <a cp_show="hrefIsMissing"> {{URL | uppercase:'stupidArgument'}} </a>
+      <h3 cp-app="tooManyScopes" cp-hide="nestingIsForbidden"> </h3>
+    </li>
+  </head>
+</div>
+<h1 id="notUnique">
+  <img> {{"11-11-1969" | date:"mm-yy":'tooManyArguments'}} </img>
+  <ol>
+    <li> {{Money + 'IS A MOTIVE' | currency:'tooMany$' | lowercase}} </li>
+  </ol>
+</h2ByAccident>
+<div cp-app="tryingForIterator">
+  {{iteratorRepeated}}
+  <ol>
+    <li cp-for="iteratorRepeated in items;i=index">
+      {{'item number' + i + ':' + iteratorRepeated}}
+    </li>
+  </ol>
+</div>
+<li> {{'failingTestCase' + 'i am sleepy, will see it later'}}</li>
+<summary> {{'the code still needs a lot of work :|'}} </summary>

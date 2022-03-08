@@ -1,0 +1,21 @@
+what are the entities that constitute a scope?
+
+1-the directives: app, for, if, show, hide, switch & switch-case
+we push when we see the directive name and pop when we see the end tag (</tag>)
+or the self-closing tag (/>) of any HTML element.
+
+2-the variables: x, x.y, ..
+we push whenever we see an identifier (# of members in the expression = # of push operations)
+and we pop whenever the expressions ends (# of members in the expression = # of pop operations)
+---------------------------------------------
+symbols definition in the directives scopes:
+-cp_for:
+syntax 1: element in array
+element is defined in cp_for scope
+array is defined in app scope
+
+syntax 2: key, value in object
+key, value are defined in cp_for scope
+object is defined in app scope
+
+

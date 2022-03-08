@@ -1,0 +1,5 @@
+Output directory where all output is generated: (HTML)
+C:\Users\Raghad\Desktop\Compiler\html-compiler
+
+Output directory where all output is generated: (DateFormat)
+C:\Users\Raghad\Desktop\Compiler\html-compiler\src\semantic_analyzer\date_format_validator

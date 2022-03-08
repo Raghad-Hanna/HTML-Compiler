@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title> Sample </title>
+    </head>
+    <body>
+        <input id="myTestInput" type="text" cp-model="myTest" value="myTestInputValue" />
+        <div id="myTestDiv"> My Text is: {{myTest}}
+        </div>
+
+        <!-- it's already there -->
+        <script>
+            function forthyear () {
+                this.myTest = "HI MAn";
+            };
+
+            var forthyear = new forthyear();
+        </script>
+
+        <!-- our generated code -->
+        <script>
+            changes = []; // array of changes
+
+            // initial value
+            document.getElementById("myTestInput").value = forthyear.myTest;
+
+            var myTestChanges = function(event) {
+                forthyear.myTest = document.getElementById("myTestInput").value;
+                console.log(forthyear.myTest);
+            };
+
+            document.getElementById("myTestInput").addEventListener("input", function(event) {
+                //console.log("addListener");
+                changes.push(myTestChanges);
+            });
+
+            changes.push(myTestChanges);
+
+            var dataB = function(event) {
+                var defaultText = "My Text is: {{myTest}}";
+                document.getElementById("myTestDiv").innerHTML = defaultText.replace("{{myTest}}",
+                    forthyear.myTest);
+            }
+
+            document.getElementById("myTestDiv").addEventListener("changeText", function(event) {
+                    changes.push(dataB);
+            });
+
+            changes.push(dataB);
+
+            function render() {
+                setInterval(() => {
+                    //console.log("render")
+                    // for(change in changes) {
+                    for(var i = 0; i < changes.length; i++) {
+                        // console.log(changes[i]);
+                        changes[i]();
+                    }
+                    changes = [];
+                }, 1000);
+            }
+            render();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,22 @@
+1. Html id attribute MUST be unique on document level.
+2. The iterator variable should not repeat.
+3. li tag should not be outside ul/ol.
+4. Nested cp-app is forbidden.
+5. Each html element has at most one structural attribute (one statement) (if/show/hide/for/case).
+6. img tag must has src attribute.
+7. Anchor tag must has href attribute (anchor tag is <a>).
+8. (date) pipe should only receive date format.
+9. (currency) pipe should receive one character only.
+10. (upper/lower) pipes should not receive any argument.
+
+*Please note there is a possibility to have more pipes, but those are built-in inside our framework.
+
+other requirements:
+11. An element start & end tag must match.
+12. An element cannot have duplicate attributes.
+13. Void elements must have self-closing tag syntax & non-void elements must have an end tag.
+14. Parent & child elements relationship must be legal (html, head, body, title, tr besides li).
+
+*Our implementation enforces the specification rule that says HTML elements & attributes are case-insensitive.
+(except for the newly-defined directives since they are case-sensitive starting from the syntax analysis phase).
+ex: id is equivalent to ID\iD\Id, cp-app is not equivalent to CP-App

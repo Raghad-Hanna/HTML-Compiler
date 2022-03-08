@@ -1,0 +1,64 @@
+<html>
+<head>
+</head>
+<body cp-app="forthyear">
+
+<!-- <div cp-include="relative path for another html/javascript file"></div> -->
+
+<div cp-include="anotherComponent" cp-parameters="isAuthenitcated">
+</div>
+
+    <!-- this is the other file -->
+    <script>
+        var anotherComponent = function (authenticationStatus) {
+            // anything
+        }
+    </script>
+
+
+    <input id="myTestInput" type="text" cp-model="myTest"/>
+    <div id="myTestDiv">My Text is: {{myTest}}</div>
+
+
+<!-- it's already there -->
+<script>
+        var forthyear = function () {
+            var isAuthenitcated = true;
+            var x = { var1: "V1", var2: "V2", var3: "V3", var4: "V4" };
+            var myTest = "testText"
+        }
+</script>
+</body>
+</html>
+
+
+
+cp-model => declaration
+
+cp-app for, if, show => statement use declaration => new scope
+
+
+
+everything we define in html, should has a matching variable in javascript
+
+ST[ --list of apps
+    forthyear[ --list of scopes/ variables
+        isAuthenitcated_1 -- variable
+        x_1 {var1, var2, var3, var4} -- variable and scope
+        
+    ]
+]
+
+AST[ --list of apps
+forthyear[ --list of scopes
+        if {
+            isAuthenitcated <- isAuthenitcated_1
+            x {
+                var1, var2, var3, var4
+                }
+            isAuthenitcated <- isAuthenitcated_1
+        }
+    ]
+]
+
+isAuthenitcated <- forthyear.isAuthenitcated

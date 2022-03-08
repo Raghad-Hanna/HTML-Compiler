@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Sample</title>
+    </head>
+
+    <body id="b" cp-app="forthyear">
+        <span>items</span>
+        <input id="myShowItems" type="text" cp-model="showItemsCnt" value="4" />
+        <button id="showItemsBtn" @click="showItems()">ShowItems</button>
+
+        <ul>
+            <li id="my-li" cp-for="i in myArray">Item: {{i | lower}}</li>
+        </ul>
+        <!--
+        <table>
+            <tr id="my-tr" cp-for="i in myArray">
+                <td cp-for="j in i">Hi here {{j | lower}}</td>
+            </tr>
+        </table> -->
+
+        <!-- it's already there -->
+        <script>
+            function forthyear() {
+                let scope = this;
+
+                this.myArray = [];
+                this.showItemsCnt = 6;
+            
+                this.showItems = function () {
+                    scope.myArray = [];
+                    for (var i = 0; i < scope.showItemsCnt; i++) {
+                        // scope.myArray.push(i + 1);
+                        scope.myArray.push('A' + i + 1);
+                    }
+                }
+
+                this.lower = function(str){
+                    return str.toLowerCase();
+                }
+            };
+
+            var forthyear = new forthyear();
+            forthyear.showItems()
+        </script>
+
+        <script src=""> </script>
+
+        <!-- our generated code -->
+        <script>
+            changes = []; // array of changes
+            renders = [];
+            new_elements = [];
+
+            var cpForMyLi = function (event) {
+                let originalElement = document.getElementById("my-li");
+                let container = originalElement.parentElement;
+                let defaultText = "Item: {{i}}";
+            
+                for (var i in forthyear.myArray) {
+                    let elem = originalElement.cloneNode(true);
+                    elem.id = "my-li" + i;
+                    elem.innerHTML = defaultText.replace('{{i}}', forthyear.lower(i));
+                    elem.hidden= false;
+                    container.appendChild(elem);
+                    new_elements.push(elem);
+                }
+                originalElement.hidden = true;
+            }
+            renders.push(cpForMyLi);
+
+            // update the variable
+            document.getElementById("myShowItems").value = forthyear.showItemsCnt;
+
+            // cp-model
+            var myShowItemsChanges = function (event) {
+                forthyear.showItemsCnt = parseInt(document.getElementById("myShowItems").value);
+            };
+        
+            // trace the input changes
+            document.getElementById("myShowItems").addEventListener("input", function(event) {
+                // console.log("addListener");
+                changes.push(myShowItemsChanges);
+            });
+            changes.push(myShowItemsChanges);
+
+        
+            document.getElementById("showItemsBtn").addEventListener('click', function(event){
+                forthyear.showItems();
+            });
+
+            function render() {
+                setInterval(() => {
+                    for (let i = 0; i <new_elements.length; i++) new_elements[i].remove();
+
+                    for (var i = 0; i < changes.length; i++) {
+                        changes[i]();
+                    }
+                    changes = [];
+
+                    for (var i = 0; i < renders.length; i++) {
+                        renders[i]();
+                    }
+                }, 1000);
+            };
+
+            render();
+        </script>
+    </body>
+</html>

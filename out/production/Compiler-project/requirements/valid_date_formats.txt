@@ -1,0 +1,8 @@
+1- dd/mm/yyyy h:m:s (with or without seconds)
+2- mm/dd/yyyy h:m:s (with or without seconds)
+3- dd-mm-yyyy h:m:s (with or without seconds)
+4- mm-dd-yyyy h:m:s (with or without seconds)
+5- mm-yyyy
+6- mm-yy
+
+others are shown in the parser.

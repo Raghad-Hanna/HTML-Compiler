@@ -1,0 +1,90 @@
+                                    Directives Syntax & Semantics
+
+                                                cp_for
+Semantics:
+it repeats the element that it is being applied to (rendering the element's content)
+once for every member of the array we're looping through.
+
+syntax:
+"variable in arrayDataSource"
+
+variable is going to be assigned every array member while iterating =>
+    it is a temporary variable.
+    ex: x, a simple temporary variable to hold the array members.
+
+arrayDataSource is the array we are looping through =>
+    it could be an array literal or a variable that refers to an array.
+    ex: x.y.f().a[1], a complex expression like this could resolve to an array.
+
+*the cp_for directive can be applied to all kinds of HTML elements.
+__________________________________________________________________________________________________________
+                                            cp-model
+semantics:
+it binds the value the user enters through HTML elements to the variable specified
+(the value will be bound to the variable so that any changes on
+the value will reflect in the variable).
+
+syntax:
+"variable"
+
+variable can be a simple variable or an object variable member but NOT a function.
+    ex: x.y.r, s[2], f.x[1] ..
+
+*the cp-model can be applied to HTML input elements(input, textarea, select ..) only.
+__________________________________________________________________________________________________________
+                    events(@click, @mouseover, @focus, @change)
+semantics:
+it adds an event listener to the element that it is being applied to
+(basically responding to user actions by doing something).
+
+syntax:
+"expression"
+
+expression could be a lot of things, a functionCall, a simple statement like an assignment ..
+    ex: buttonClicked(), counter = counter + 1 ..
+
+*the events can be applied to many HTML elements.
+__________________________________________________________________________________________________________
+                                          cp-show/cp-hide
+Semantics:
+it shows/hides the element that it is being applied to
+if its expression resolves to true/false, otherwise, it does not.
+
+syntax:
+"expression"
+
+expression, as the name implies, could really be any expression that resolves
+to a boolean.
+    ex: x, a[1][v], f(d) ..
+
+*the cp-show/cp-hide directive can be applied to all kinds of HTML elements.
+__________________________________________________________________________________________________________
+                                            cp-if
+it shows the element that it is being applied to
+if its expression resolves to true, otherwise it does not.
+
+syntax:
+"expression"
+
+expression, as the name implies, could really be any expression that resolves
+to a boolean.
+    ex: x, a[1][v], f(d) ..
+
+*the cp-if directive can be applied to all kinds of HTML elements.
+
+*so what's the difference between cp-show and cp-if?
+cp-show (and its sibling cp-hide) toggle the appearance of the element by adding the CSS display: none.
+ng-if, on the other hand, actually removes the element from the DOM when the condition is false
+and only adds the element back once the condition turns true.
+__________________________________________________________________________________________________________
+                                        cp-app
+semantics:
+it defines the root element of an AngularJS application (the element that it is being applied to).
+it automatically initializes the AngularJS application on page load.
+it can be used to load various modules in AngularJS Application.
+
+syntax:
+np-app (on its own, without any value) or ng-app="ModuleName".
+
+*the cp-app directive can be applied to all kinds of HTML elements.
+_________________________________________________________________________________________________________

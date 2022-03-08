@@ -1,0 +1,148 @@
+
+<!--1-->
+<!-- If stmt-->
+<html>
+<head>
+    <script type="text/javascript" src="s" charset="UTF-8"></script><nav class="globalNav" data-module="nav">
+        <header>
+            <div id="navAuth" cp-if="isAuthenitcated">
+                <ul class="navProvider">
+                    <li id="mvpdLogo"></li>
+                </ul>
+            </div>
+            <div id="navNotAuth" cp-if="! isAuthenitcated">
+                <p>Not auth</p>
+            </div>
+        </header>
+    </nav>
+</head>
+<body></body>
+</html>
+
+<!--2-->
+
+<!-- for stmt 1-->
+<html>
+<head>
+    <nav class="globalNav" data-module="nav">
+        <header>
+            <div>
+                <ul class="navProvider" cp-model="s1">
+                    <li>{{i}} : {{x}}</li>
+                </ul>
+            </div>
+        </header>
+    </nav>
+</head>
+<body></body>
+</html>
+
+<!--3-->
+<!-- for stmt 2-->
+<html>
+<head>
+    <nav class="globalNav">
+        <header>
+            <div>
+                <ul class="navProvider" cp-for="obj in t;i=index">
+                    <li>{{i}} : {{obj.fistName}} {{obj.lastName}}</li>
+                </ul>
+            </div>
+        </header>
+    </nav>
+</head>
+<body></body>
+</html>
+
+
+<!--4-->
+<!-- for stmt 3-->
+<html>
+<head>
+
+</head>
+<body>
+<form>
+    <p cp-for="k,v in obj"> {{v}} </p>
+    <p cp-for="k,v in obj"> {{v > 18 ? 'Adult' : 'young' }} </p>
+</form>
+</body>
+</html>
+
+<!--5-->
+<!-- ng model-->
+<html>
+<head>
+    <nav class="globalNav">
+        <header>
+        </header>
+    </nav>
+</head>
+<body>
+  <form>
+      <input type="text" cp-model="name" />
+      <input type="text" cp-model="age" />
+      <input type="text" cp-model="name" />
+  </form>
+</body>
+</html>
+
+
+<!--6-->
+<!-- cp show-->
+<html>
+<head>
+
+</head>
+<body>
+    <p cp-show="showParagraph()"> displayed </p>
+    <p cp-hide="!showParagraph()"> hidden </p>
+</body>
+</html>
+
+
+<!--7-->
+<!-- cp Switch-->
+<html>
+<head>
+
+</head>
+<body>
+<div cp-switch="object.value">
+    <h1 cp-switch-case="1"> displayed </h1>
+    <h2 cp-switch-case="2"> displayed </h2>
+    <h3 cp-switch-case="3"> displayed </h3>
+    <h4 cp-switch-case="4"> displayed </h4>
+    <h2 cp-switchDefault> displayed </h2>
+</div>
+</body>
+</html>
+
+
+<!--8 -->
+<!-- Pipe -->
+<html>
+<head>
+
+</head>
+<body>
+<div>
+    <p cp-if="formatted"> {{date | myFormater:"YYYY-MM-DD"}} </p>
+    <p cp-if="!formatted"> {{date | myFormater:"YYYYMMDD"}} </p>
+</div>
+</body>
+</html>
+
+<!--9-->
+<!-- One line  condition -->
+<html>
+<head>
+
+</head>
+<body>
+<div>
+    <p cp-if="result() < 30"> {{result() < 20 ? (x > 15 ? '1-1' : '1-2') : (x < 15 ? '2-1' : '2-2') }} </p>
+</div>
+</body>
+</html>
+

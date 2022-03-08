@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Sample 1 - basic model</title>
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=VufAWOcGY5e6ID55sEn0BiwAwcGKVxEgn9n8hWFnsvq6ohHkY3apEUO-bAPJF9nwxPB3A3G84djHYjdRv3mllW56d3RaJu80hSMM4UAPLC1C-jVkmJxS5haNP-N145ngJDDmUcNSF0XZERboKZe8IWXQvHcUP0d_h_8IyoPMtH7Qt5aV2oAZ6u9-8dhbZzLx2PhUAPpXTE_q6w4pMEeiidgWRVfUJ0QbeNE9ZqPAuABlK1n00d98F7OO67xoQmp0j-A9qCpd_2inm4iP3WjQEC3rn_8gFM4YE2ZLjLc1JBn424JrMdzN6PGWX0mxLnDcNfHM2nlDXPOJU6Ok_ABHsAg9109gx4nOf09yck2o1brupkm_p_e6wMHbiYbykJpNuk94uGqgXedfRGgQ_TN5-lQRxDbmA1CFyuTuHsvA2kF7dc93NYADTfVIESvmIAePAcrKiiMADZxbPRfKSlMxjdaPyw5JU0RXTazDmNAApQg86VzP2RpadARHNgwZ-rwPLB6yc6aKSK4p0M1yCl3DhVxMscQ7pupSvDRD9QU7sxsD481tylkZP3c9uYgIGSsCl1EYOmEjULm0OYh5z8VjAprUjOpEk0CCBskk1_kj3fXVxCkj1gil9gckMktMyECLiQd8oF63ISMUZak-UYg5vG4F6B29LWTKlY9OQS8WTLpWu0_GErVNnWsiJpeVZvr-Ne5-29fnn5oE5ss4rSgCXXddLrv7iSRmuVVK3uiIZzNuL2qkpDMqCgey2k9evzONmnIapRH2QwfstO9ZgEtuzA" charset="UTF-8"></script></head>
+
+<body cp-app="forthyear">
+
+    <input type="text" cp-model="myTest" />
+    <div id="myTestDiv">My Text is: {{myTest}}</div>
+
+    <script>
+        function forthyear() {
+            this.myTest = "HI MAn";
+        };
+
+        var forthyear = new forthyear();
+
+    </script>
+
+
+</body>
+
+</html>
+
+
+<!-- --------------------------------------------------------------------- -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Sample 2 for</title>
+</head>
+
+<body id="b" cp-app="forthyear">
+    <span>Items</span>
+    <input id="myShowItems" type="text" cp-model="showItemsCnt" value="4" />
+    <button id="showItemsBtn" @click="showItems()">ShowItems</button>
+
+    <ul>
+        <li id="my-li" cp-for="i in myArray">Item: {{i | lower}}</li>
+    </ul>
+
+    <table>
+        <tr cp-for="i in myArray">
+            <td>Row: {{i}}</td>
+        </tr>
+    </table>
+
+    <script>
+        function forthyear() {
+            let scope = this;
+
+            this.myArray = [];
+            this.showItemsCnt = 6;
+
+            this.showItems = function () {
+                scope.myArray = [];
+                for (var i = 0; i < scope.showItemsCnt; i++) {
+                    // scope.myArray.push(i + 1);
+                    scope.myArray.push('A' + i + 1);
+                }
+            }
+
+            this.lower = function (str) {
+                return str.toLowerCase();
+            }
+        };
+
+        var forthyear = new forthyear();
+        forthyear.showItems()
+
+
+    </script>
+
+</body>
+
+</html>
+
+<!-- --------------------------------------------------------------------- -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Sample 3 switch</title>
+</head>
+
+<body id="bs" cp-app="forthyear">
+    <span>Cards?</span>
+    <input id="myShowItems" type="text" cp-model="showItemsCnt" value="4" />
+
+    <div cp-switch="showItemsCnt">
+        <h1 cp-switch-case="1"> King of Heart </h1>
+        <h2 cp-switch-case="2"> Ace of Spades </h2>
+        <h3 cp-switch-case="3"> Queen of Diamonds </h3>
+        <h4 cp-switch-case="4"> Jack of Clubs </h4>
+        <h2 cp-switchDefault> Uno! </h2>
+    </div>
+
+    <script>
+        function forthyear() {
+            this.showItemsCnt = 6;
+        };
+
+        var forthyear = new forthyear();
+
+    </script>
+
+</body>
+
+</html>
+
+
+
+<!-- --------------------------------------------------------------------- -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Sample 4 if</title>
+</head>
+
+<body id="b" cp-app="forthyear">
+    <span>Cards?</span>
+    <input id="myShowItems" type="text" cp-model="showItemsCnt" value="4" />
+
+    <div cp-if="showItemsCnt > 10">
+        <div>it's a big number {{showItemsCnt}}</div>
+    </div>
+
+    <script>
+        function forthyear() {
+            this.showItemsCnt = 6;
+        };
+
+        var forthyear = new forthyear();
+
+    </script>
+
+</body>
+
+</html>
+
+<!-- --------------------------------------------------------------------- -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Sample 5 filters</title>
+</head>
+
+<body id="b" cp-app="forthyear">
+    <span>Cards?</span>
+    <input id="myShowItems" type="text" cp-model="showItemsCnt" value="4" />
+
+    <div>it's a big number {{showItemsCnt | currency:'D'}}</div>
+    <!-- D id USD $ -->
+
+    <script>
+        function forthyear() {
+            this.showItemsCnt = 6;
+        };
+
+        var forthyear = new forthyear();
+
+    </script>
+
+</body>
+
+</html>
+
+
+<!-- --------------------------------------------------------------------- -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Sample 6 events</title>
+</head>
+
+<body id="b" cp-app="forthyear">
+    <span>My Number:</span>
+    <input id="myShowItems" type="text" cp-model="mult" value="4" />
+    <br />
+
+
+    <button @click="clickTimes()"> Click me for count</button>
+    <button @click="clickMultipllices(mult, clickTimes)"> Click me for(factorial* 2)" Click me for multiplices</button>
+    <button @mousemove="mousemove()"> walk over me</button>
+
+    <span>you clicked {{clickTimes}}</span>
+    <span>you calculated the multiplices {{mults}}</span>
+    <span>you moved your mouse over the button {{overtimes}}</span>
+
+
+
+    <!-- D id USD $ -->
+
+    <script>
+        function forthyear() {
+            let scope = this;
+            this.clickTimes = 0;
+            this.mults = 0;
+            this.overtimes = 0;
+
+            this.clickTimes = function () {
+                scope.clickTimes++;
+            }
+
+            this.clickMultipllices = function (mult, times) {
+                scope.mults = mult * times;
+            }
+
+            this.mousemove = function () {
+                scope.overtimes++
+            }
+        };
+
+        var forthyear = new forthyear();
+
+    </script>
+
+</body>
+
+</html>
+
+<!-- --------------------------------------------------------------------- -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Sample 7 everything</title>
+</head>
+
+<body cp-app="forthyear">
+
+    <div>
+        <span>Id</span> <input type="number" cp-model="newObj.newId" /> <br />
+        <span>Name</span> <input type="text" cp-model="newObj.newName" /> <br />
+        <span>Date</span> <input type="date" cp-model="newObj.newDate" /> <br />
+        <button @click="addSt()">Add</button>
+    </div>
+
+    <div cp-if="newAddedSt.Id">
+        <span>the new St id: {{newAddedSt.newId}}</span>
+        <span>the new St Name: {{newAddedSt.newId | lower}}</span>
+        <span>the new St Date: {{newAddedSt.newId | date:'dd/mm/yyyy'}}</span> <!-- any date format you want  -->
+    </div>
+
+    <table>
+        <thead>
+            <th cp-for="k,v in obj[0]">{{k}}</th>
+        </thead>
+        <tr cp-for="st in obj">
+            <td cp-for="s in st">{{s}}</td>
+        </tr>
+    </table>
+
+
+    <script>
+        function forthyear() {
+            let scope = this;
+            scope.newObj = {};
+            scope.newAddedSt = {};
+            scope.obj = [
+                { id: 1, name: "St1", birthdate: new Date() },
+                { id: 2, name: "St2", birthdate: new Date() },
+                { id: 3, name: "St3", birthdate: new Date() },
+                { id: 4, name: "St4", birthdate: new Date() },
+                { id: 5, name: "St5", birthdate: new Date() },
+                { id: 6, name: "St6", birthdate: new Date() },
+            ]
+            scope.addSt = function () {
+                scope.newAddedSt = Object.assign({}, scope.newObj)
+                scope.obj.push(Object.assign({}, scope.newObj));
+                scope.newObj = {};
+            }
+        };
+
+        var forthyear = new forthyear();
+
+    </script>
+
+</body>
+
+</html>

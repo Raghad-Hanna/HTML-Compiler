@@ -1,0 +1,17 @@
+Compiler Code Generation tasks
+1. Cp-model:
+a. Comes with input tag only;
+b. Binds with a variable (this variable will be used somewhere else).
+2. Cp-for:
+a. Iterate over an array of primitives/objects;
+3. Cp-switch:
+a. Checks a variable value and show only the html template based on the condition
+4. Cp-if:
+a. Deletes/creates the internal html template based on a condition
+5. Cp-show/hide:
+a. Changes the value of “hidden” attribute based on a condition
+6. Events:
+a. Ex: @click, @doubleclick
+b. Takes a function and call it when the event occurs.
+7.  Filters:
+a. Uses inside the “{{}}” and calls a function to format the template string

@@ -1,0 +1,62 @@
+<div cp-app="myApp">
+    <!-- for (variable in [direct array or variable name]): parent tag -->
+    <!-- ---------FOR---------------------------  -->
+    <!-- standard -->
+    <p cp-for="x in t"> {{x}} </p>
+
+    <!-- index -->
+    <p cp-for="x in t;i=index"> {{x}}, {{i}} </p>
+
+    <!-- direct array -->
+    <p cp-for="x in ['1','2','4'];i=index"> {{x}}, {{i}} </p>
+
+    <!-- key/value of an object -->
+    <p cp-for="k,v in obj"> {{k}}:{{v}} </p>
+    <script>
+        var obj = {name: "Compiler", year: 2020, type: "COVID"}
+    </script>
+
+    <!-- -----------------switch-------------------  -->
+    <container-element cp-switch="object.value">
+        <!-- the same view can be shown in more than one case -->
+        <some-element cp-switch-case="match_expression_1">...</some-element>
+        <some-element cp-switch-case="match_expression_2">...</some-element>
+        <!--default case when there are no matches -->
+        <some-element cp-switch-default>...</some-element>
+    </container-element>
+
+    <!-- ---------------show/hide/if---------------------  -->
+    <p cp-show="object.variable"></p>
+    <p cp-hide="myFunction()"></p>
+    <p cp-if="object.variable > 2"></p>
+
+    <!-- ---------------model---------------------  -->
+    <input type="text" cp-model="xx"/>
+    <script>
+        var xx = "Hi"
+    </script>
+
+    <input type="text" cp-model="xx"/>  <!-- 20201122 -->
+    <p>
+        {{xx | myFormater('yyyyMMdd')}}   <!-- 20201122 -->
+        {{xx ? 2 : 1}}   <!-- if shortcut / one line codition -->
+    </p>
+
+    <!-- ---------------events---------------------  -->
+    <span @click="myFunction()"></span>
+    <span @mouseover="myFunction()"></span>
+    <script>
+        var myFunction = function () {
+        }
+        var myFormater = function (text, format) {
+            // date parse and format logic
+            return "Sunday 22 Nov 2020"
+        }
+    </script>
+
+    <script>
+        var myApp = function () {
+            var xx = "Hi"
+        }
+    </script>
+</div>

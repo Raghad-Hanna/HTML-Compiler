@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" cp-app="forthyear" id="iQ2JY">
+	<head id="CEv5Y">
+		<title id="HqZHR">
+			Sample 
+		</title>
+	</head>
+	<body id="N1jtH">
+		<input id="myTestInput" type="text" cp-model="myTest" value="myTestInputValue"/>
+		<div id="myTestDiv">
+			My Text is: 
+			{{myTest | currency:'%'}}
+		</div>
+		<script>
+            function forthyear () {
+                this.myTest = "200";
+            };
+
+            var forthyear = new forthyear();
+        </script>
+
+		<script>
+			changes = [];
+			renders = [];
+			copiedElements = [];
+			allCpIfStatements = [];
+			allSwitchStatements = [];
+			allElement = [];
+			let isFound;
+			let element;
+
+			document.getElementById("myTestInput").value = forthyear.myTest;
+
+			var changeInputmyTestInputValue = function(event) {
+				forthyear.myTest = document.getElementById("myTestInput").value;
+			};
+
+			document.getElementById("myTestInput").addEventListener("input", function(event) {
+				changes.push(changeInputmyTestInputValue);
+			});
+
+			changes.push(changeInputmyTestInputValue);
+
+			element = document.getElementById("myTestDiv")
+			allElement.push({ originalText: element.innerText, id: "myTestDiv"})
+			var elementmyTestDivInnerText = function() {
+				element = document.getElementById("myTestDiv")
+				if(element) {
+					var value =  forthyear.myTest 
+					let arg = '%';
+					value = currency(value, arg);
+					defaultText = allElement.find(el => el.id == "myTestDiv").originalText
+					defaultText = defaultText.replace("{{myTest | currency:'%'}}", value)
+					element.innerText = defaultText
+				}
+
+				function lower(text) { return text.toLowerCase(); };
+				function upper(text) { return text.toUpperCase(); };
+				function currency(text, currencyArg) { return currencyArg + text; };
+			}
+
+			renders.push(elementmyTestDivInnerText)
+
+			function render() {
+				setInterval(() => {
+					for(let i = 0; i < copiedElements.length; i++)
+						copiedElements[i].remove();
+
+					for(var i = 0; i < changes.length; i++) {
+						changes[i]();
+					}
+
+					changes = [];
+
+					for(var i = 0; i < renders.length; i++) {
+						renders[i]();
+					}
+				}, 1000);
+			};
+
+			render();
+		</script>
+	</body>
+</html>

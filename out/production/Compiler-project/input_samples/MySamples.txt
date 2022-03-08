@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" cp-app="forthyear">
+    <head>
+        <title> Sample </title>
+    </head>
+    <body>
+        <input id="myTestInput" type="text" cp-model="myTest" value="myTestInputValue" />
+        <div id="myTestDiv"> My Text is: {{myTest | currency:'%'}}
+        </div>
+
+        <script>
+            function forthyear () {
+                this.myTest = "200";
+            };
+
+            var forthyear = new forthyear();
+        </script>
+    </body>
+</html>
